@@ -1,0 +1,32 @@
+.BookShelf {
+  width: 100%;
+}
+
+.BookShelf__BooksCnt {
+  display: inline-flex;
+  max-height: 400px;
+  width:100% ;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.BookShelf__header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 3px;
+  border-radius: 15px;
+} /*
+::-webkit-scrollbar-track{
+    height: 5px;
+    border-radius: 10px;
+    background-color: white;
+}*/
+::-webkit-scrollbar-thumb {
+  background-color: blue;
+  border-radius: 10px;
+}

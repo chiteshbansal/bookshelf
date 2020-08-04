@@ -1,0 +1,89 @@
+.LoginForm_cnt{
+    top: 15%;
+    right:  2%;
+    position: absolute;
+    width: 45%;
+    height: 85%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.LoginForm{
+    width: 60%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0,0,0,.4),0px 0px 10px rgb(0, 140, 255);
+    display: inline-flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+.LoginForm >div{
+    margin: 1rem 0;
+}
+
+
+
+.ValidInputElement{
+    padding: 1rem;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 25px;
+    border: 1px solid rgb(0, 140, 255);
+}
+
+
+
+.ValidInputElement:focus{
+    outline: none;
+    border: none;
+    border: 4px solid rgb(0, 140, 255);
+}
+
+.InvalidInputElement{
+    padding: 1rem;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 25px;
+    border: 1px solid red;
+}
+
+
+
+.InvalidInputElement:focus{
+    outline: none;
+    border: none;
+    border: 4px solid red;
+}
+
+.LoginBtnCnt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.LoginForm button{
+    width: 80%;
+    border-radius: 25px;
+    color:white;
+    background-image: linear-gradient(to right,rgb(6, 29, 240),rgb(0, 68, 255),rgb(0, 140, 255));
+    padding: 1rem;
+    border: none;
+    margin: .5rem auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.LoginForm button:focus{
+    outline: none;
+}
+.LoginForm button:disabled{
+    color: grey;
+    cursor: not-allowed;
+}

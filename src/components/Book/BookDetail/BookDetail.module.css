@@ -1,0 +1,63 @@
+.BookDetail {
+  border-radius: 10px;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 10px 10px 5px rgab(0, 0, 0, 0.5);
+
+  justify-content: space-between;
+}
+
+.title {
+  background-image: linear-gradient(151.05deg, #02ccba, #a951ed);
+  padding: 1rem;
+  display: flex;
+  border-radius: inherit;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+
+  box-sizing: border-box;
+  font-size: 1.2rem;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
+}
+.title img {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  transition: 0.5s ease-in-out;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+}
+.title img:hover {
+  position: relative;
+  transform: scale(5) translate(-80%, 45%);
+}
+.title span {
+  opacity: 0.5;
+  text-shadow: none;
+  margin-top: 1rem;
+}
+.description {
+  max-height: 50%;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+.actions {
+  justify-self: flex-end;
+  background-image: linear-gradient(151.05deg, #02ccba, #a951ed);
+  padding: 1rem;
+  border-radius: inherit;
+}
+
+.actions a {
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  padding: 0.6rem;
+  margin: 0 0.5rem;
+  border-radius: 10px;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 5px rgba(0, 0, 0, 0.2);
+}

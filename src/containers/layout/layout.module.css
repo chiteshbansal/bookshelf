@@ -1,0 +1,20 @@
+.layout {
+  overflow: hidden;
+  display:flex;
+}
+
+body{
+  overflow: hidden;
+}
+
+.booksSection {
+  scroll-behavior: smooth;
+  width: 75%;
+  overflow: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  height: 100vh;
+  display: inline-block;
+  border-left: 1px solid rgba(0, 0, 0, 0.4);
+  padding-left: 1rem;
+}
