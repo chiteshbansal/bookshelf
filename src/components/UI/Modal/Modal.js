@@ -10,7 +10,7 @@ function Modal(props) {
         className={classes.Modal}
         style={{ transform: props.show ? "translate(0)" : "translate(-100vw)" }}
       >
-        {props.show ? props.children : null}
+        {props.show?props.children:null}
       </div>
     </Aux>
   );

@@ -13,7 +13,7 @@ class Layout extends Component {
   state = {
     searchText: "",
     searchIndex: 0,
-    books: [],
+    books: null,
     Shelf: [
       {
         topic: "Poem",
@@ -117,6 +117,11 @@ class Layout extends Component {
             searchIndex: this.state.searchIndex + 1,
             books: response.data.items,
           });
+        }else{
+          this.setState({
+            loading:false,
+            books:[],
+          })
         }
       })
       .catch((error) => {
@@ -126,7 +131,7 @@ class Layout extends Component {
 
   render() {
     let books = this.state.loading ? <Spinner /> : null;
-    if (this.state.books.length > 0 && !this.state.loading) {
+    if (this.state.books && this.state.books.length > 0 && !this.state.loading) {
       console.log(this.state.books, "fetched books are ");
       books = (
         <BookShelf
@@ -137,6 +142,8 @@ class Layout extends Component {
           click={this.onSubmitSearchHandler}
         />
       );
+    }else if(this.state.books && this.state.books.length ===0 && !this.state.loading){
+        books = <div>No Results to show</div>
     }
     let shelves = null;
     shelves = this.state.Shelf.map((slf) => {

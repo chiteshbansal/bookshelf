@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classes from "./Book.module.css";
 import Button from "../UI/Button/Button";
 import Modal from "../UI/Modal/Modal";
-import BookDetail from '../Book/BookDetail/BookDetail';
+import BookDetail from "../Book/BookDetail/BookDetail";
 
 function Book(props) {
   const [show, setshow] = useState(false);
@@ -12,14 +12,11 @@ function Book(props) {
     <div key={book.id} className={classes.Book}>
       <div className={classes.Book__Image}>
         <a href={book.accessInfo.webReaderLink} target="__blank">
-          <img
-            src={
-              book.volumeInfo.imageLinks
-                ? book.volumeInfo.imageLinks.thumbnail
-                : ""
-            }
-            alt="bookimg"
-          />
+          {book.volumeInfo.imageLinks ? (
+            <img src={book.volumeInfo.imageLinks.thumbnail} alt="bookimg" />
+          ) : (
+            <img width='150' height='150' style={{objectFit:'contain'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRqa3W1Wk7Oiwxyso4yiFkpmFokuMEtiayj0A&usqp=CAU" />
+          )}
         </a>
       </div>
       <div className={classes.Book__description}>
@@ -69,8 +66,13 @@ function Book(props) {
           </span>
         </div>
       </div>
-      <Modal show={show} click={()=>{setshow(false)}}>
-        <BookDetail book = {book}/>
+      <Modal
+        show={show}
+        click={() => {
+          setshow(false);
+        }}
+      >
+        <BookDetail book={book} />
       </Modal>
     </div>
   );
