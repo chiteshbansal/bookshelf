@@ -1,20 +1,39 @@
 .layout {
+  width: 100%;
   overflow: hidden;
-  display:flex;
+  display: flex;
+  flex-wrap: wrap;
 }
-
 body{
-  overflow: hidden;
+  scroll-behavior: smooth;
 }
 
 .booksSection {
   scroll-behavior: smooth;
-  width: 75%;
-  overflow: auto;
+  width: 100%;
+
   display: inline-block;
+
   box-sizing: border-box;
-  height: 100vh;
+
   display: inline-block;
   border-left: 1px solid rgba(0, 0, 0, 0.4);
   padding-left: 1rem;
+}
+
+@media screen and (min-width: 1000px) {
+  .booksSection {
+    width: 75%;
+    display: inline-block;
+  }
+  .layout {
+    flex-wrap: nowrap;
+  }
+  body {
+    overflow: hidden;
+  }
+  .booksSection {
+    height: 100vh;
+    overflow: auto;
+  }
 }

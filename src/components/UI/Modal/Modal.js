@@ -8,7 +8,7 @@ function Modal(props) {
       <BackDrop show={props.show} click={props.click} />
       <div
         className={classes.Modal}
-        style={{ transform: props.show ? "translate(0)" : "translate(-100vw)" }}
+        style={{ transform: props.show ? "translate(0)" : "translate(-200vw)" }}
       >
         {props.show?props.children:null}
       </div>

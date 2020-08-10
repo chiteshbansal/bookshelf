@@ -1,9 +1,9 @@
 .Modal {
   position: absolute;
-  top: 15%;
-  left: 30%;
+  top: 50%;
+  left: 0;
   height: 70%;
-  width: 50%;
+  width: 100%;
   border-radius: 10px;
   transform: translate(-50%, -50%);
   transition: 0.2s ease-in-out;
@@ -11,4 +11,10 @@
   background-color: white;
 }
 
-
+@media screen and (min-width: 1000px) {
+  .Modal {
+    top: 15%;
+    left: 30%;
+    width: 50%;
+  }
+}

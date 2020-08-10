@@ -18,7 +18,7 @@
 
 
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 6px;
   height: 3px;
   border-radius: 15px;
 } /*
@@ -28,6 +28,6 @@
     background-color: white;
 }*/
 ::-webkit-scrollbar-thumb {
-  background-color: blue;
+  background-color: orange;
   border-radius: 10px;
 }

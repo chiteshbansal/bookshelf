@@ -4,6 +4,8 @@ import axios from "axios";
 import BookShelf from "../../components/BookShelf/BookShelf";
 import Sidebar from "../../components/Navigation/Sidebar/Sidebar";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import Modal from "../../components/UI/Modal/Modal";
+import MoreOptionsList from "../../components/MoreOptionsList/MoreOptionsList";
 
 class Layout extends Component {
   constructor() {
@@ -41,6 +43,7 @@ class Layout extends Component {
       },
     ],
     loading: false,
+    ShowMoreOptions: false,
   };
 
   componentDidMount() {
@@ -85,10 +88,6 @@ class Layout extends Component {
     });
   };
 
-  onMoreSearchHandler = () => {
-    console.log("in more search", this.state);
-    this.onSubmitSearchHandler(this.state.searchText);
-  };
   onSubmitSearchHandler = (SearchText = "") => {
     let search = SearchText;
     console.log("ref si ", this.layoutref);
@@ -113,37 +112,63 @@ class Layout extends Component {
           window.scrollTo(0, 0);
           this.setState({
             loading: false,
-            searchText: SearchText !== "" ? SearchText : "",
+            searchText:"",
             searchIndex: this.state.searchIndex + 1,
             books: response.data.items,
           });
-        }else{
+        } else {
           this.setState({
-            loading:false,
-            books:[],
-          })
+            searchText:"",
+            loading: false,
+            books: [],
+          });
         }
       })
       .catch((error) => {
         console.log("error is ", error.response.data);
       });
   };
+  onToggleMoreOptionModal = () => {
+    this.setState((prevState) => {
+      return {
+        ShowMoreOptions: !prevState.ShowMoreOptions,
+      };
+    });
+  };
 
   render() {
+    let MoreOptionsModal = null;
+    if (this.state.ShowMoreOptions) {
+      MoreOptionsModal = (
+        <Modal
+          show={this.state.ShowMoreOptions}
+          click={this.onToggleMoreOptionModal}
+        >
+          <MoreOptionsList search={this.onSubmitSearchHandler} click={this.onToggleMoreOptionModal} />
+        </Modal>
+      );
+    }
     let books = this.state.loading ? <Spinner /> : null;
-    if (this.state.books && this.state.books.length > 0 && !this.state.loading) {
+    if (
+      this.state.books &&
+      this.state.books.length > 0 &&
+      !this.state.loading
+    ) {
       console.log(this.state.books, "fetched books are ");
       books = (
         <BookShelf
           searchShelf
-          MoreSearch={this.onMoreSearchHandler}
           books={this.state.books}
           title={"Search Result"}
           click={this.onSubmitSearchHandler}
         />
       );
-    }else if(this.state.books && this.state.books.length ===0 && !this.state.loading){
-        books = <div>No Results to show</div>
+    } else if (
+      this.state.books &&
+      this.state.books.length === 0 &&
+      !this.state.loading
+    ) {
+      books = <div>No Results to show</div>;
     }
     let shelves = null;
     shelves = this.state.Shelf.map((slf) => {
@@ -159,10 +184,11 @@ class Layout extends Component {
     console.log("state is ", this.state);
     return (
       <div className={classes.layout}>
+        {MoreOptionsModal}
         <Sidebar
           change={this.onSearchChangeHandler}
           submit={this.onSubmitSearchHandler}
-          click={this.scrollDownto}
+          click={this.onToggleMoreOptionModal}
           options={this.state.Shelf}
           value={this.state.searchText}
         />

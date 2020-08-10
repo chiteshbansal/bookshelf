@@ -29,9 +29,15 @@
   transition: 0.5s ease-in-out;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
-.title img:hover {
+.title img:hover{
   position: relative;
-  transform: scale(5) translate(-80%, 45%);
+  transform:scale(5) translate(-50%,45%);
+}
+@media screen and (min-width: 1000px) {
+  .title img:hover {
+    position: relative;
+    transform: scale(5) translate(-80%, 45%);
+  }
 }
 .title span {
   opacity: 0.5;
