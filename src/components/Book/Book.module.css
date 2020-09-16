@@ -1,6 +1,7 @@
 .Book {
   display: inline-flex;
   width: 100%;
+  z-index: 1;
   min-width: 400px;
   box-sizing: border-box;
   margin: 1rem;
@@ -126,13 +127,23 @@
 .Book__description__categories:hover {
   color: black;
 }
-.knowMoreBtn{
-  transition: .3s linear;
+.knowMoreBtn {
+  transition: 0.3s linear;
   opacity: 0;
 }
 
-.Book:hover .knowMoreBtn{
+.Book:hover .knowMoreBtn {
   opacity: 1;
+}
+.Book_toolBar {
+  display: inline-block;
+  z-index: -1;
+  display: flex;
+  background-color: red;
+}
+.Book_toolBar >div{
+  padding: .1rem;
+  margin: .1rem;
 }
 @media screen and (min-width: 1000px) {
   .Book {

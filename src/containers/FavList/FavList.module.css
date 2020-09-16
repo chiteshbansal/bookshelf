@@ -1,0 +1,12 @@
+.EmptyFavList {
+  width: 80%;
+  margin: 1rem auto;
+  border-radius: 0px 10px 10px 0px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3), 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  border-left: 5px solid orange;
+  padding: 1rem;
+}

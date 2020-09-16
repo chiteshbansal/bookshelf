@@ -10,12 +10,21 @@ function Book(props) {
   const { volumeInfo } = book;
   return (
     <div key={book.id} className={classes.Book}>
+      <div className={classes.Book_toolBar}>
+        <div>f</div>
+        <div>m</div>
+      </div>
       <div className={classes.Book__Image}>
         <a href={book.accessInfo.webReaderLink} target="__blank">
           {book.volumeInfo.imageLinks ? (
             <img src={book.volumeInfo.imageLinks.thumbnail} alt="bookimg" />
           ) : (
-            <img width='150' height='150' style={{objectFit:'contain'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRqa3W1Wk7Oiwxyso4yiFkpmFokuMEtiayj0A&usqp=CAU" />
+            <img
+              width="150"
+              height="150"
+              style={{ objectFit: "contain" }}
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRqa3W1Wk7Oiwxyso4yiFkpmFokuMEtiayj0A&usqp=CAU"
+            />
           )}
         </a>
       </div>

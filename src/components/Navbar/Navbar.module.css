@@ -1,8 +1,7 @@
 .Navbar{
     width: 100%;
-    background-image: linear-gradient(to right,rgb(10, 81, 235),rgb(0, 89, 255),rgb(0, 140, 255),rgb(0, 204, 255));
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     box-sizing: border-box;
     margin-bottom: 1rem;
 }

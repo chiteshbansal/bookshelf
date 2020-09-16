@@ -1,10 +1,13 @@
-import React from 'react';
-import Layout from './containers/layout/layout';
+import React from "react";
+import Layout from "./containers/layout/layout";
+import { BrowserRouter } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-        <Layout/>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Layout />
+      </div>
+    </BrowserRouter>
   );
 }
 

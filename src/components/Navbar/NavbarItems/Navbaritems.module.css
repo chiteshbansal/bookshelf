@@ -1,7 +1,28 @@
-.NavbarItem{
-    display: inline-block;
-    padding:.5rem;
-    background-color: white;
-    box-sizing: border-box;
-    margin: .5rem ;
+.NavbarItem {
+  display: inline-block;
+  position: relative;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  margin: 0.5rem 1rem;
+  border-bottom: 1px solid orange;
+  z-index: 1;
+}
+.hoverDiv {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 0%;
+  width: 100%;
+  background-color: rgba(255, 166, 0, 0.507);
+  transition: 0.5s ease-in-out;
+  box-sizing: border-box;
+}
+.NavbarItem a{
+    text-decoration: none;
+    color: black;
+}
+.NavbarItem:hover > .hoverDiv {
+  height: 100%;
+  border-bottom: 1px solid orange;
 }

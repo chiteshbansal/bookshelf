@@ -6,6 +6,11 @@ import Sidebar from "../../components/Navigation/Sidebar/Sidebar";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import Modal from "../../components/UI/Modal/Modal";
 import MoreOptionsList from "../../components/MoreOptionsList/MoreOptionsList";
+import NavBar from "../../components/Navbar/Navbar";
+import LoginForm from "../../components/LoginForm/LoginForm";
+import { Route, Switch } from "react-router-dom";
+import FavList from "../FavList/FavList";
+import Aux from "../../Utils/Hoc/Hoc";
 
 class Layout extends Component {
   constructor() {
@@ -16,6 +21,7 @@ class Layout extends Component {
     searchText: "",
     searchIndex: 0,
     books: null,
+    showLoginForm: false,
     Shelf: [
       {
         topic: "Poem",
@@ -112,13 +118,13 @@ class Layout extends Component {
           window.scrollTo(0, 0);
           this.setState({
             loading: false,
-            searchText:"",
+            searchText: "",
             searchIndex: this.state.searchIndex + 1,
             books: response.data.items,
           });
         } else {
           this.setState({
-            searchText:"",
+            searchText: "",
             loading: false,
             books: [],
           });
@@ -135,16 +141,33 @@ class Layout extends Component {
       };
     });
   };
-
+  onToggleLoginForm = () => {
+    this.setState((prevState) => {
+      return {
+        showLoginForm: !prevState.showLoginForm,
+      };
+    });
+  };
   render() {
     let MoreOptionsModal = null;
+    let loginFormModal = null;
+    if (this.state.showLoginForm) {
+      loginFormModal = (
+        <Modal show={this.state.showLoginForm} click={this.onToggleLoginForm}>
+          <LoginForm />
+        </Modal>
+      );
+    }
     if (this.state.ShowMoreOptions) {
       MoreOptionsModal = (
         <Modal
           show={this.state.ShowMoreOptions}
           click={this.onToggleMoreOptionModal}
         >
-          <MoreOptionsList search={this.onSubmitSearchHandler} click={this.onToggleMoreOptionModal} />
+          <MoreOptionsList
+            search={this.onSubmitSearchHandler}
+            click={this.onToggleMoreOptionModal}
+          />
         </Modal>
       );
     }
@@ -184,6 +207,7 @@ class Layout extends Component {
     console.log("state is ", this.state);
     return (
       <div className={classes.layout}>
+        {loginFormModal}
         {MoreOptionsModal}
         <Sidebar
           change={this.onSearchChangeHandler}
@@ -192,9 +216,33 @@ class Layout extends Component {
           options={this.state.Shelf}
           value={this.state.searchText}
         />
-        <div className={classes.booksSection} ref={this.layoutref}>
-          {books}
-          {shelves}
+        <div className={classes.MainBody}>
+          <NavBar />
+          <div className={classes.booksSection} ref={this.layoutref}>
+            <Switch>
+              <Route
+                path="/MyFavList"
+                render={() => {
+                  return (
+                    <Aux>
+                      <FavList books={[]} />
+                    </Aux>
+                  );
+                }}
+              />
+              <Route
+                path="/"
+                render={() => {
+                  return (
+                    <div>
+                      {books}
+                      {shelves}
+                    </div>
+                  );
+                }}
+              />
+            </Switch>
+          </div>
         </div>
       </div>
     );

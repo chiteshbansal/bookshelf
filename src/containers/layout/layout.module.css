@@ -4,16 +4,17 @@
   display: flex;
   flex-wrap: wrap;
 }
-body{
+body {
   scroll-behavior: smooth;
 }
-
-.booksSection {
-  scroll-behavior: smooth;
+.MainBody {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-
-  display: inline-block;
-
+}
+.booksSection {
+  width: 100%;
+  scroll-behavior: smooth;
   box-sizing: border-box;
 
   display: inline-block;
@@ -22,7 +23,7 @@ body{
 }
 
 @media screen and (min-width: 1000px) {
-  .booksSection {
+  .MainBody {
     width: 75%;
     display: inline-block;
   }
@@ -30,7 +31,7 @@ body{
     flex-wrap: nowrap;
   }
   body {
-    overflow: hidden;
+    overflow: auto;
   }
   .booksSection {
     height: 100vh;
