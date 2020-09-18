@@ -8,7 +8,16 @@ function BookShelf(props) {
   let Books = null;
   if (books.length > 0) {
     Books = books.map((book) => {
-      return <Book book={book} SearchByCategory={props.click} />;
+      return (
+        <Book
+          MyFavoriteList={props.MyFavoriteList}
+          book={book}
+          add={props.addToFav}
+          remove={props.removefromFav}
+          SearchByCategory={props.click}
+          addToFav={props.addToFav}
+        />
+      );
     });
   }
   return (

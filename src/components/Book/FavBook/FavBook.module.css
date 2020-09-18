@@ -1,0 +1,106 @@
+.FavBookCnt {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.FavBook {
+  width: 85%;
+  max-height: 260px;
+  z-index: 10;
+  border-left: 4px solid rgb(0, 195, 255);
+  padding: 1rem;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2), 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.Book_toolbar {
+  background-color: white;
+  display: flex;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  flex-direction: column;
+  border-right: 4px solid rgb(0, 119, 255);
+  transition: 0.5s linear;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+  transform: translateX(-50px);
+}
+
+.Book_toolbar:hover {
+  transform: translate(5px);
+  border: 2px dashed orange;
+}
+.Book_toolbar > div {
+  padding: 0.5rem;
+  margin-bottom: 0.2rem;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2),
+    -4px -4px 4px rgba(255, 255, 255, 0.3);
+  border: 1px solid #ffffff;
+}
+.Book_toolbar > div:hover {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2),
+    -4px -4px 4px rgba(255, 255, 255, 0.3), inset 4px 4px 4px rgba(0, 0, 0, 0.2),
+    inset -4px -4px 4px rgba(255, 255, 255, 0.3);
+}
+.FavBook_Cover {
+  width: 100%;
+  margin-bottom: 1rem;
+  height: 100%;
+  max-height: inherit;
+  overflow: inherit;
+  box-sizing: border-box;
+  display: flex;
+  padding: 1rem;
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  border: 2px solid orange;
+  margin: auto;
+}
+.FavBook_Cover .Book_Title {
+  position: absolute;
+  background-color: white;
+  top: -6%;
+  left: 4%;
+  max-width: 40%;
+  max-height: 25px;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
+  font-size: 1.3rem;
+  padding: 0rem 0.5rem;
+}
+.FavBook_Cover .Book_Author {
+  position: absolute;
+  max-width: 40%;
+  max-height: 25px;
+  word-wrap: break-word;
+  overflow: hidden;
+  background-color: white;
+  top: -6%;
+  right: 4%;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
+  font-size: 1.3rem;
+  padding: 0rem 0.5rem;
+}
+
+.FavBook .Book_Image {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.FavBook .Book__description {
+  width: 70%;
+  max-height: 200px;
+  overflow: hidden;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 1rem;
+  border: 1px dashed rgb(238, 175, 58);
+  box-sizing: border-box;
+}
+.favorite {
+  color: red;
+}

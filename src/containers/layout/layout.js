@@ -11,6 +11,8 @@ import LoginForm from "../../components/LoginForm/LoginForm";
 import { Route, Switch } from "react-router-dom";
 import FavList from "../FavList/FavList";
 import Aux from "../../Utils/Hoc/Hoc";
+import * as actions from "../../Store/actions/index";
+import { connect } from "react-redux";
 
 class Layout extends Component {
   constructor() {
@@ -181,6 +183,9 @@ class Layout extends Component {
       books = (
         <BookShelf
           searchShelf
+          MyFavoriteList={this.props.MyFavoriteList}
+          addToFav={this.props.addToMyFav}
+          removefromFav={this.props.removeFromMyFav}
           books={this.state.books}
           title={"Search Result"}
           click={this.onSubmitSearchHandler}
@@ -197,10 +202,13 @@ class Layout extends Component {
     shelves = this.state.Shelf.map((slf) => {
       return (
         <BookShelf
+          MyFavoriteList={this.props.MyFavoriteList}
           title={slf.topic}
           books={slf.books}
           click={this.onSubmitSearchHandler}
           id={slf.topic}
+          addToFav={this.props.addToMyFav}
+          removefromFav={this.props.removeFromMyFav}
         />
       );
     });
@@ -225,7 +233,7 @@ class Layout extends Component {
                 render={() => {
                   return (
                     <Aux>
-                      <FavList books={[]} />
+                      <FavList books={this.state.FavList} />
                     </Aux>
                   );
                 }}
@@ -248,5 +256,20 @@ class Layout extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    MyFavoriteList: state.MyFavoriteList,
+  };
+};
 
-export default Layout;
+const mapDispatchToprops = (dispatch) => {
+  return {
+    addToMyFav: (book) => {
+      dispatch(actions.addToFavoriteList(book));
+    },
+    removeFromMyFav: (bookId) => {
+      dispatch(actions.removeFromFavList(bookId));
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToprops)(Layout);

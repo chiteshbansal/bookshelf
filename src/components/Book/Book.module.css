@@ -1,8 +1,9 @@
 .Book {
   display: inline-flex;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   min-width: 400px;
+  position: relative;
   box-sizing: border-box;
   margin: 1rem;
   font-family: sans-serif;
@@ -101,16 +102,40 @@
 }
 .Book__description__actions {
   display: flex;
+  align-items: center;
+  opacity: 0;
+  box-sizing: border-box;
+  justify-content: space-evenly;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  border-bottom: 4px solid orange;
+  transition: 0.5s ease-in-out;
+  background-color: #eeeeee;
   margin-top: 0.5rem;
+  padding: 0.4rem;
+}
+
+.favorite{
+  color: red;
 }
 .Book__description__actions a {
   text-decoration: none;
   color: rgb(238, 183, 4);
 }
 .Book__description__actions i {
-  background-color: white;
+  background-color: #eeeeee;
   padding: 0.5rem;
-  border-radius: 50%;
+  border-radius: 5px;
+  border: 1px solid #eeeeee;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4),
+    -4px -4px 4px rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+}
+.Book__description__actions i:hover,
+.Book__description__actions .knowMoreBtn:hover {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4),
+    -4px -4px 4px rgba(255, 255, 255, 0.6), inset 4px 4px 4px rgba(0, 0, 0, 0.2);
+  border: 2px solid orange;
 }
 
 .Book__description__categories {
@@ -128,24 +153,27 @@
   color: black;
 }
 .knowMoreBtn {
-  transition: 0.3s linear;
-  opacity: 0;
+  background-color: #eeeeee;
+  padding: 0.5rem;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4),
+    -4px -4px 4px rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
 }
 
-.Book:hover .knowMoreBtn {
+.Book:hover .Book__description__actions {
   opacity: 1;
 }
-.Book_toolBar {
-  display: inline-block;
-  z-index: -1;
-  display: flex;
-  background-color: red;
+
+.Book_toolBar > div {
+  padding: 0.1rem;
+  margin: 0.1rem;
 }
-.Book_toolBar >div{
-  padding: .1rem;
-  margin: .1rem;
+.Book:hover .Book_toolBar {
+  opacity: 1;
+  height: auto;
 }
 @media screen and (min-width: 1000px) {
+  
   .Book {
     display: inline-flex;
     width: 45%;
@@ -155,3 +183,4 @@
     box-sizing: border-box;
   }
 }
+

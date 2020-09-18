@@ -1,5 +1,5 @@
 .BookDetail {
-  border-radius: 10px;
+
   height: 100%;
   background-color: white;
   display: flex;
@@ -46,7 +46,10 @@
 }
 .description {
   max-height: 55%;
+  width: 90%;
+  margin:auto;
   overflow: auto;
+  border: 2px dashed orange;
   box-sizing: border-box;
   padding: 1rem;
 }
