@@ -113,18 +113,23 @@
   background-color: #eeeeee;
   margin-top: 0.5rem;
   padding: 0.4rem;
+  width: 100%;
+  flex-wrap: wrap;
+  overflow: auto;
 }
 
-.favorite{
+.favorite {
   color: red;
 }
 .Book__description__actions a {
   text-decoration: none;
+
   color: rgb(238, 183, 4);
 }
 .Book__description__actions i {
   background-color: #eeeeee;
   padding: 0.5rem;
+  margin: .5rem 0rem;
   border-radius: 5px;
   border: 1px solid #eeeeee;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4),
@@ -164,16 +169,7 @@
   opacity: 1;
 }
 
-.Book_toolBar > div {
-  padding: 0.1rem;
-  margin: 0.1rem;
-}
-.Book:hover .Book_toolBar {
-  opacity: 1;
-  height: auto;
-}
 @media screen and (min-width: 1000px) {
-  
   .Book {
     display: inline-flex;
     width: 45%;
@@ -183,4 +179,3 @@
     box-sizing: border-box;
   }
 }
-

@@ -8,7 +8,7 @@ function Navbar(props) {
       <div>
         <NavbarItem path='/'>Home</NavbarItem>
         <NavbarItem path='/MyFavList'>My Favorite Books</NavbarItem>
-        <NavbarItem path='/'>User profile </NavbarItem>
+        <NavbarItem path='/User'>User profile </NavbarItem>
         <NavbarItem path='/'>Login</NavbarItem>
       </div>
     </div>

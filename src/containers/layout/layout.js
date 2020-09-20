@@ -13,6 +13,10 @@ import FavList from "../FavList/FavList";
 import Aux from "../../Utils/Hoc/Hoc";
 import * as actions from "../../Store/actions/index";
 import { connect } from "react-redux";
+import SideSpace from "../../components/SideSpace/SideSpace";
+import SideDrawer from "../../components/SideDrawer/SideDrawer";
+import User from '../../components/User/User';
+
 
 class Layout extends Component {
   constructor() {
@@ -24,6 +28,7 @@ class Layout extends Component {
     searchIndex: 0,
     books: null,
     showLoginForm: false,
+    showSideDrawer: false,
     Shelf: [
       {
         topic: "Poem",
@@ -84,6 +89,13 @@ class Layout extends Component {
     });
   }
 
+  onToggleSideDrawer = () => {
+    this.setState((prevState) => {
+      return {
+        showSideDrawer: !prevState.showSideDrawer,
+      };
+    });
+  };
   onSearchChangeHandler = (event) => {
     if (event.key === "Enter") {
       window.scrollTo(0, 0);
@@ -212,17 +224,38 @@ class Layout extends Component {
         />
       );
     });
-    console.log("state is ", this.state);
+    console.log("this props", this.props);
     return (
       <div className={classes.layout}>
+        <div
+          className={classes.SideDrawerToggler}
+          onClick={this.onToggleSideDrawer}
+        >
+          <div></div>
+        </div>
         {loginFormModal}
         {MoreOptionsModal}
-        <Sidebar
-          change={this.onSearchChangeHandler}
-          submit={this.onSubmitSearchHandler}
-          click={this.onToggleMoreOptionModal}
-          options={this.state.Shelf}
-          value={this.state.searchText}
+        <Switch>
+          <Route path="/MyFavList" component={SideSpace} />
+          <Route path="/User" component={SideSpace} />
+          <Route
+            path="/"
+            render={() => {
+              return (
+                <Sidebar
+                  change={this.onSearchChangeHandler}
+                  submit={this.onSubmitSearchHandler}
+                  click={this.onToggleMoreOptionModal}
+                  options={this.state.Shelf}
+                  value={this.state.searchText}
+                />
+              );
+            }}
+          />
+        </Switch>
+        <SideDrawer
+          show={this.state.showSideDrawer}
+          toggle={this.onToggleSideDrawer}
         />
         <div className={classes.MainBody}>
           <NavBar />
@@ -236,6 +269,12 @@ class Layout extends Component {
                       <FavList books={this.state.FavList} />
                     </Aux>
                   );
+                }}
+              />
+              <Route
+                path="/User"
+                render={() => {
+                  return <User />;
                 }}
               />
               <Route
