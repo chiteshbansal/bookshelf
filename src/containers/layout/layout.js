@@ -15,8 +15,8 @@ import * as actions from "../../Store/actions/index";
 import { connect } from "react-redux";
 import SideSpace from "../../components/SideSpace/SideSpace";
 import SideDrawer from "../../components/SideDrawer/SideDrawer";
-import User from '../../components/User/User';
-
+import User from "../../components/User/User";
+import Auth from "../../components/Auth/Auth";
 
 class Layout extends Component {
   constructor() {
@@ -238,6 +238,7 @@ class Layout extends Component {
         <Switch>
           <Route path="/MyFavList" component={SideSpace} />
           <Route path="/User" component={SideSpace} />
+          <Route path="/auth" component={SideSpace} />
           <Route
             path="/"
             render={() => {
@@ -261,6 +262,7 @@ class Layout extends Component {
           <NavBar />
           <div className={classes.booksSection} ref={this.layoutref}>
             <Switch>
+              <Route path="/auth" component={Auth} />
               <Route
                 path="/MyFavList"
                 render={() => {

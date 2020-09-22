@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classes from "./User.module.css";
 import Img from "../../images/image1.jpg";
-import { Redirect } from "react-router";
+
 function User(props) {
   let fileInputRef = null;
   const [userData, setUserData] = useState({

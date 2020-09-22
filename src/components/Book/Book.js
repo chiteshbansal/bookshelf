@@ -74,9 +74,6 @@ function Book(props) {
                 }}
               ></i>
             </div>
-            <div>
-              <i class="fas fa-plus-circle"></i>
-            </div>
 
             <div>
               {book.accessInfo.epub.isAvailable ? (

@@ -10,6 +10,7 @@ body {
 .MainBody {
   display: flex;
   flex-direction: column;
+  z-index: 1;
   width: 100%;
 }
 .booksSection {
@@ -59,33 +60,33 @@ body {
   filter: blur(2px);
   border-radius: 50%;
   background-image: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
-  animation:Rainbow 1s linear infinite;
+  animation: Rainbow 1s linear infinite;
 }
 
-@keyframes Rainbow{
-  0%{
+@keyframes Rainbow {
+  0% {
     transform: rotate(0deg);
   }
-  100%{
+  100% {
     transform: rotate(360deg);
   }
 }
 .SideDrawerToggler:before {
   font-family: "FontAwesome";
-  content: '\f0c9';
+  content: "\f0c9";
   position: absolute;
   top: 50%;
   left: 50%;
-  transform:translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   background-color: white;
   height: 20px;
   width: 20px;
   text-align: center;
-  padding: .6rem;
+  padding: 0.6rem;
   border-radius: 50%;
 }
-@media screen and (max-width:400px){
-  .SideDrawerToggler{
+@media screen and (max-width: 400px) {
+  .SideDrawerToggler {
     display: block;
   }
 }

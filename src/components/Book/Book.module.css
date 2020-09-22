@@ -113,7 +113,6 @@
   background-color: #eeeeee;
   margin-top: 0.5rem;
   padding: 0.4rem;
-  width: 100%;
   flex-wrap: wrap;
   overflow: auto;
 }
@@ -129,7 +128,7 @@
 .Book__description__actions i {
   background-color: #eeeeee;
   padding: 0.5rem;
-  margin: .5rem 0rem;
+  margin: 0.5rem 0rem;
   border-radius: 5px;
   border: 1px solid #eeeeee;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4),

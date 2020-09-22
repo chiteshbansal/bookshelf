@@ -9,7 +9,7 @@ function Navbar(props) {
         <NavbarItem path='/'>Home</NavbarItem>
         <NavbarItem path='/MyFavList'>My Favorite Books</NavbarItem>
         <NavbarItem path='/User'>User profile </NavbarItem>
-        <NavbarItem path='/'>Login</NavbarItem>
+        <NavbarItem path='/auth'>Login/SignUp</NavbarItem>
       </div>
     </div>
   );

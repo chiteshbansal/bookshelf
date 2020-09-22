@@ -3,9 +3,8 @@ import classes from "./SideSpace.module.css";
 import MyFavListImg from "../../images/image1.jpg";
 import UserProfileImg from "../../images/userProfileSideBar.jpg";
 
-
 function SideSpace(props) {
-  let SideSpaceImg = '';
+  let SideSpaceImg = MyFavListImg;
   switch (props.location.pathname) {
     case "/MyFavList":
       SideSpaceImg = MyFavListImg;
@@ -16,7 +15,7 @@ function SideSpace(props) {
     default:
       SideSpaceImg = MyFavListImg;
   }
-  console.log(SideSpaceImg,props.location.pathname,props);
+  console.log(SideSpaceImg, props.location.pathname, props);
   return (
     <div className={classes.SideSpace}>
       <img src={SideSpaceImg} />

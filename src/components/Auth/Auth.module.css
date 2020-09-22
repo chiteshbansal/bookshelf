@@ -1,0 +1,102 @@
+.Auth {
+  width: 100%;
+  margin: auto;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4), 0px 0px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  height: 60vh;
+  flex-direction: column;
+}
+
+.AuthNavigator {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 0;
+  /* box-shadow: inset 4px 4px 5px rgba(0, 0, 0, 0.07),
+    inset -4px -44px 5px rgba(0, 0, 0, 0.07); */
+  padding: 2rem;
+  padding-bottom: 0;
+}
+.AuthNavigator > div {
+  width: 45%;
+  box-sizing: border-box;
+  text-align: center;
+  border-bottom: 2px solid orange;
+  padding-bottom: 0;
+}
+.formContainer {
+  padding: 1rem;
+  position: relative;
+  flex-grow: 1;
+  z-index: 2;
+  background-color: #f1f1f1;
+}
+.formContainer input {
+  border: none;
+  outline: none;
+  padding: 1rem;
+  color: white;
+  background-color: transparent;
+}
+.formContainer input::placeholder {
+  color: white;
+}
+.formContainer input:hover:not(:focus) {
+  border: none;
+  border-bottom: 1px solid gray;
+  outline: none;
+}
+.formContainer .LoginForm,
+.formContainer .SignUpForm {
+  display: flex;
+  position: absolute;
+  transition: 0.3s ease-in;
+  background-color: white;
+  flex-direction: column;
+  width: 90%;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4), 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  height: 90%;
+  box-sizing: border-box;
+  margin: 1rem;
+  /* z-index: -1; */
+  justify-content: center;
+  z-index: 0;
+  align-items: center;
+}
+.formContainer .LoginForm > div,
+.formContainer .SignUpForm > div {
+  margin: 0.4rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  border-radius: 35px;
+  background-image: linear-gradient(151.05deg, #02ccba, #a951ed);
+}
+.formContainer .LoginForm img,
+.formContainer .SignUpForm img {
+  margin-right: 0.7rem;
+}
+.formContainer input:focus {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid rgb(184, 72, 236);
+}
+.LoginForm.Hide {
+  transform: translateX(200vh);
+}
+
+.SignUpForm.Hide {
+  transform: translateX(-200vh);
+}
+
+.LoginForm.Show,
+.SignUpForm.Show {
+  transform: translateX(0);
+}
+
+@media screen and (min-width: 1000px) {
+  .Auth {
+    width: 60%;
+    margin: 5rem auto;
+  }
+}
