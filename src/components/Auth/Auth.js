@@ -19,6 +19,11 @@ function Auth(props) {
       <div className={classes.AuthNavigator}>
         <div onClick={() => setLoginState(true)}>Login</div>
         <div onClick={() => setLoginState(false)}>SignUp</div>
+        <div
+          className={
+            isLoggingIn ? classes.LoginIndicator : classes.SignUpIndicator
+          }
+        ></div>
       </div>
       <div className={classes.formContainer}>
         <div className={LoginFormclasses.join(" ")}>

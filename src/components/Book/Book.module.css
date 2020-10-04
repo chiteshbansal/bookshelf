@@ -9,40 +9,32 @@
   font-family: sans-serif;
   border-radius: 10px;
 }
-.Book:nth-child(4n) {
-  background-image: linear-gradient(
-    to bottom,
-    rgb(109, 184, 79),
-    rgb(109, 233, 130),
-    rgb(0, 255, 115),
-    white
-  );
+.Book > div {
+  position: relative;
+  z-index: 1;
+}
+/* .Book::before{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 110%;
+  box-sizing: border-box;
+  width: 118%;
+  filter: blur(45px);
+  transform:  scale(0.8);
+} */
+.Book:nth-child(4n + 0) {
+  background-image: linear-gradient(135deg, #24ff72, #2196f3);
 }
 .Book:nth-child(4n + 1) {
-  background-image: linear-gradient(
-    to bottom,
-    rgba(204, 0, 255, 0.5),
-    rgb(223, 109, 233),
-    white
-  );
+  background-image: linear-gradient(135deg, #f403d1, #64b5f6);
 }
 .Book:nth-child(4n + 2) {
-  background-image: linear-gradient(
-    to bottom,
-    rgb(109, 163, 233),
-    rgb(79, 133, 184),
-    rgb(0, 183, 255),
-    white
-  );
+  background-image: linear-gradient(135deg, #f4f003, #64b5f6);
 }
 .Book:nth-child(4n + 3) {
-  background-image: linear-gradient(
-    to bottom,
-    rgb(109, 184, 79),
-    rgb(109, 233, 130),
-    rgb(0, 255, 115),
-    white
-  );
+  background-image: linear-gradient(135deg, #24ff72, #2196f3);
 }
 
 .Book__Image {
