@@ -60,6 +60,8 @@ class Layout extends Component {
   };
 
   componentDidMount() {
+    localStorage.setItem("isLoggedIn", false);
+    localStorage.setItem("token", undefined);
     this.state.Shelf.map((slf) => {
       axios
         .get(

@@ -1,7 +1,8 @@
 import classes from "./Auth.module.css";
 import React, { useState } from "react";
-import { NavLink, Route } from "react-router-dom";
-import LoginForm from "../LoginForm/LoginForm";
+import { NavLink, Route, withRouter } from "react-router-dom";
+import LoginForm from "./LoginForm/LoginForm";
+import SignUpForm from "./SignUpForm/SignUpForm";
 
 function Auth(props) {
   const [isLoggingIn, setLoginState] = useState(true);
@@ -26,39 +27,11 @@ function Auth(props) {
         ></div>
       </div>
       <div className={classes.formContainer}>
-        <div className={LoginFormclasses.join(" ")}>
-          <div>
-            <img src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png" />
-            <input type="email" placeholder="Enter your email address here" />
-          </div>
-          <div>
-            <img src="https://img.icons8.com/metro/26/000000/password.png" />
-            <input type="password" placeholder="Enter your password here" />
-          </div>
-          <div>
-            <button type="submit">Login</button>
-          </div>
-        </div>
-        <div className={SignUpFormclasses.join(" ")}>
-          <div>
-            <img src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png" />
-            <input type="email" placeholder="Enter your email address here" />
-          </div>
-          <div>
-            <img src="https://img.icons8.com/metro/26/000000/password.png" />
-            <input type="password" placeholder="Enter your password here" />
-          </div>
-          <div>
-            <img src="https://img.icons8.com/metro/26/000000/password.png" />
-            <input type="password" placeholder="ReEnter your password" />
-          </div>
-          <div>
-            <button type="submit">SignUp</button>
-          </div>
-        </div>
+        <LoginForm LoginFormclasses={LoginFormclasses} />
+        <SignUpForm SignUpFormclasses={SignUpFormclasses} />
       </div>
     </div>
   );
 }
 
-export default Auth;
+export default withRouter(Auth);

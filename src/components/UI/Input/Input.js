@@ -22,6 +22,15 @@ function Input(props) {
         />
       );
       break;
+    case "select":
+      InputElement = (
+        <select onChange={props.changed}>
+          {props.elementConfig.options.map((option) => {
+            return <option>{option.name}</option>;
+          })}
+        </select>
+      );
+      break;
     default:
       InputElement = (
         <input
@@ -34,7 +43,9 @@ function Input(props) {
   }
   return (
     <div>
-      <label>{props.label}</label>
+      <label style={{ margin: "0rem 1rem", color: "white" }}>
+        {props.label}
+      </label>
       {InputElement}
     </div>
   );
