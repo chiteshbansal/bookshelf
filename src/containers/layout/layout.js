@@ -264,7 +264,16 @@ class Layout extends Component {
           <NavBar />
           <div className={classes.booksSection} ref={this.layoutref}>
             <Switch>
-              <Route path="/auth" component={Auth} />
+              <Route
+                path="/auth"
+                render={() => {
+                  return (
+                    <Auth
+                      userCreatedSuccess={this.props.auth.userCreatedSuccess}
+                    />
+                  );
+                }}
+              />
               <Route
                 path="/MyFavList"
                 render={() => {
@@ -301,7 +310,8 @@ class Layout extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    MyFavoriteList: state.MyFavoriteList,
+    MyFavoriteList: state.list.MyFavoriteList,
+    auth: state.Auth,
   };
 };
 

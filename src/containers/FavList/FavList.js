@@ -25,7 +25,7 @@ class FavList extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    MyFavoriteList: state.MyFavoriteList,
+    MyFavoriteList: state.list.MyFavoriteList,
   };
 };
 

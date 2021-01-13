@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import Input from "../../UI/Input/Input";
+import * as actions from "../../../Store/actions/index";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
 
 class SignUpForm extends Component {
   constructor(props) {
@@ -59,6 +62,14 @@ class SignUpForm extends Component {
       },
     };
   }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log(this.props.auth,"scom")
+  //   return (
+  //     this.props.auth.userCreatedSuccess !== nextProps.auth.userCreatedSuccess
+  //   );
+  // }
+
   onInputChangeHandler = (field, value) => {
     let updatedControls = JSON.stringify(this.state.controls);
     updatedControls = JSON.parse(updatedControls);
@@ -76,26 +87,27 @@ class SignUpForm extends Component {
       contactNo: controls.tel.value,
       profession: controls.profession.value,
     };
-    console.log("user", JSON.stringify(user));
-    fetch("http://localhost:3000/Auth/createUser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((result) => {
-        return result.json();
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.props.CreateUser(user);
+    // fetch("http://localhost:3000/Auth/createUser", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(user),
+    // })
+    //   .then((result) => {
+    //     return result.json();
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   render() {
+    console.log("render signup");
     let formElements = [];
     for (let key in this.state.controls) {
       let element = { id: key, config: this.state.controls[key] };
@@ -128,5 +140,20 @@ class SignUpForm extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    auth: state.Auth,
+  };
+};
 
-export default SignUpForm;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    CreateUser: (user) => {
+      dispatch(actions.createUser(user));
+    },
+  };
+};
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(SignUpForm)
+);
