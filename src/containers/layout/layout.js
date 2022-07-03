@@ -17,6 +17,7 @@ import SideSpace from "../../components/SideSpace/SideSpace";
 import SideDrawer from "../../components/SideDrawer/SideDrawer";
 import User from "../../components/User/User";
 import Auth from "../../components/Auth/Auth";
+import Logout from "../../components/Auth/Logout/Logout";
 
 class Layout extends Component {
   constructor() {
@@ -29,6 +30,7 @@ class Layout extends Component {
     books: null,
     showLoginForm: false,
     showSideDrawer: false,
+    isLoggedIn :false,
     Shelf: [
       {
         topic: "Poem",
@@ -60,8 +62,7 @@ class Layout extends Component {
   };
 
   componentDidMount() {
-    localStorage.setItem("isLoggedIn", false);
-    localStorage.setItem("token", undefined);
+    this.props.isAuthorized();
     this.state.Shelf.map((slf) => {
       axios
         .get(
@@ -81,12 +82,17 @@ class Layout extends Component {
             return shelf;
           });
 
+          let isLoggedIn = localStorage.getItem("isLoggedIn");
+          console.log("islogged in in layout",isLoggedIn);
           this.setState({
             Shelf: UpdateShelf,
+            isLoggedIn:isLoggedIn,
           });
         })
         .catch((error) => {
           console.log(error);
+          let isLoggedIn = localStorage.getItem("isLoggedIn");
+          this.setState({isLoggedIn:isLoggedIn});
         });
     });
   }
@@ -193,7 +199,6 @@ class Layout extends Component {
       this.state.books.length > 0 &&
       !this.state.loading
     ) {
-      console.log(this.state.books, "fetched books are ");
       books = (
         <BookShelf
           searchShelf
@@ -226,7 +231,6 @@ class Layout extends Component {
         />
       );
     });
-    console.log("this props", this.props);
     return (
       <div className={classes.layout}>
         <div
@@ -261,7 +265,7 @@ class Layout extends Component {
           toggle={this.onToggleSideDrawer}
         />
         <div className={classes.MainBody}>
-          <NavBar />
+          <NavBar isLoggedIn={this.state.isLoggedIn}/>
           <div className={classes.booksSection} ref={this.layoutref}>
             <Switch>
               <Route
@@ -290,6 +294,7 @@ class Layout extends Component {
                   return <User />;
                 }}
               />
+              <Route path="/logout" component={Logout}/>
               <Route
                 path="/"
                 render={() => {
@@ -323,6 +328,9 @@ const mapDispatchToprops = (dispatch) => {
     removeFromMyFav: (bookId) => {
       dispatch(actions.removeFromFavList(bookId));
     },
+    isAuthorized :()=>{
+      dispatch(actions.isAuthorized());
+    }
   };
 };
 export default connect(mapStateToProps, mapDispatchToprops)(Layout);

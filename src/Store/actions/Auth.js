@@ -41,3 +41,55 @@ export const createUser = (user) => {
       });
   };
 };
+const loginStart = () =>{
+  return {
+    type:actions.LOGIN_START
+  }
+}
+const loginFailed = (error)=>{
+  return {
+    type:actions.LOGIN_FAILED,
+    error:error,
+  }
+}
+const loginSuccess =(user,token)=>{
+  return {
+    type:actions.LOGIN_SUCCESS,
+    user:user,
+    token:token,
+  }
+}
+export const login = (email,password) =>{
+  
+  return (dispatch)=> {
+    dispatch(loginStart());
+    fetch(API_URLS.login,{
+      method:"Post",
+      headers:{
+        'Content-Type':"Application/json",
+      },
+      body:JSON.stringify({email:email,password:password}),
+    }).then((response)=>{
+      return response.json();
+    }).then((result)=>{
+      console.log("login success");
+      dispatch(loginSuccess(result.user,result.token));
+    }).catch((error)=>{
+      console.log(error)
+      dispatch(loginFailed(error));
+    })
+  }
+}
+
+export const isAuthorized = ()=>{
+  console.log("is auth running");
+  return {
+    type:actions.IS_AUTHORIZED,
+  }
+}
+
+export const logout = () =>{
+  return {
+    type:actions.LOGOUT,
+  }
+}

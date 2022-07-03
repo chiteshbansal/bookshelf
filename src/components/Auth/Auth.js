@@ -16,7 +16,6 @@ function Auth(props) {
     SignUpFormclasses.push(classes.Show);
   }
 
-  console.log("in the auth com");
   return (
     <div className={classes.Auth}>
       <div className={classes.AuthNavigator}>

@@ -1,2 +1,2 @@
 export { addToFavoriteList, removeFromFavList } from "./Lists";
-export {createUser} from './Auth';
+export {createUser,login,isAuthorized,logout} from './Auth';

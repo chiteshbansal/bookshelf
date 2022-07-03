@@ -6,3 +6,5 @@ export const CREATE_USER_FAILED = "CREATE_USER_FAILED";
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILED = "LOGIN_FAILED";
+export const IS_AUTHORIZED = "IS_AUTHORIZED";
+export const LOGOUT = "LOGOUT";

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Input from "../../UI/Input/Input";
 import { withRouter } from "react-router-dom";
-
+import {connect} from 'react-redux';
+import * as actions from "../../../Store/actions/index";
 class LoginForm extends Component {
   constructor(props) {
     super();
@@ -26,6 +27,18 @@ class LoginForm extends Component {
       },
     };
   }
+  componentDidMount() {
+    console.log("is logged in",this.props.isLoggedIn)
+    if(this.props.isLoggedIn ==true){
+      this.props.history.push("/")
+    }
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if(prevProps.isLoggedIn!==this.props.isLoggedIn && this.props.isLoggedIn==true){
+      console.log('inside the cdu');
+      this.props.history.push('/');
+    }
+  }
   onInputChangeHandler = (field, value) => {
     let updatedControls = JSON.stringify(this.state.controls);
     updatedControls = JSON.parse(updatedControls);
@@ -35,26 +48,26 @@ class LoginForm extends Component {
   };
   loginHandler = () => {
     const { email, password } = this.state.controls;
-
-    fetch("http://localhost:3000/Auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: email.value, password: password.value }),
-    })
-      .then((result) => {
-        return result.json();
-      })
-      .then((response) => {
-        console.log(response, this.props);
-        localStorage.setItem("isLoggedIn", true);
-        localStorage.setItem("token", response.token);
-        this.props.history.push("/");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.props.login(email.value,password.value);
+    // fetch("http://localhost:5000/Auth/login", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ email: email.value, password: password.value }),
+    // })
+    //   .then((result) => {
+    //     return result.json();
+    //   })
+    //   .then((response) => {
+    //     console.log(response, this.props);
+    //     localStorage.setItem("isLoggedIn", true);
+    //     localStorage.setItem("token", response.token);
+    //     this.props.history.push("/");
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   render() {
@@ -89,5 +102,16 @@ class LoginForm extends Component {
     );
   }
 }
-
-export default withRouter(LoginForm);
+const mapStateToProps = (state)=>{
+  return{
+    isLoggedIn:state.Auth.isLoggedIn,
+  }
+}
+const mapDispatchToProps = (dispatch)=>{
+  return {
+    login :(email,password)=>{
+      dispatch(actions.login(email,password));
+    }
+  }
+}
+export default (withRouter(connect(mapStateToProps,mapDispatchToProps)(LoginForm)));

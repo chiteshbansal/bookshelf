@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import classes from "./User.module.css";
 import Img from "../../images/image1.jpg";
+import {useSelector} from 'react-redux';
 
 function User(props) {
   let fileInputRef = null;
-  const [userData, setUserData] = useState({
-    userName: "Chitesh Bansal",
-    email: "c@c.com",
-    contactNo: "94xxxxxxxxx",
-    profession: "Student",
-  });
+  
+  const user = useSelector(state => state.Auth.user)
+  const [userData, setUserData] = useState(user);
   const [ProfileImg, setProfileImg] = useState(Img);
   const onInputChangeHandler = (field, event) => {
     let updatedDate = { ...userData };
@@ -53,7 +51,8 @@ function User(props) {
               <input
                 type="text"
                 name="userName"
-                value={userData.userName}
+                disabled
+                value={userData.name}
                 onChange={(event) => {
                   onInputChangeHandler("userName", event);
                 }}
@@ -66,6 +65,7 @@ function User(props) {
               <input
                 type="email"
                 name="email"
+                disabled
                 value={userData.email}
                 onChange={(event) => {
                   onInputChangeHandler("email", event);
@@ -79,6 +79,7 @@ function User(props) {
               <input
                 type="tel"
                 name="contact"
+                disabled
                 value={userData.contactNo}
                 onChange={(event) => {
                   onInputChangeHandler("contactNo", event);
@@ -92,6 +93,7 @@ function User(props) {
               <input
                 type="text"
                 name="profession"
+                disabled
                 value={userData.profession}
                 onChange={(event) => {
                   onInputChangeHandler("profession", event);
